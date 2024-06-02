@@ -45,6 +45,7 @@ SELECT item_name, price
 FROM superstore
 WHERE category = 'Kitchen Supplies';
 
+#Displays info about items in the Furnishings category less than £250
 SELECT item_name, category, price, stock_quantity, average_rating
 FROM superstore
 WHERE category = 'Furnishings' AND price <= 250.00
