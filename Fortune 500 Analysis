@@ -31,17 +31,17 @@ SELECT * FROM fortune_companies ORDER BY revenue DESC;
 #CASE statement
 SELECT industry, revenue,
 CASE
-WHEN revenue >= 400 THEN "High revenue performance"
-WHEN revenue >= 275 THEN "Mid revenue performance"
-WHEN revenue >= 150 THEN "Low revenue performance"
-ELSE "Underperforming"
+    WHEN revenue >= 400 THEN "High revenue performance"
+    WHEN revenue >= 275 THEN "Mid revenue performance"
+    WHEN revenue >= 150 THEN "Low revenue performance"
+    ELSE "Underperforming"
 END AS "Revenue performance"
 FROM fortune_companies
 GROUP by industry
 ORDER BY revenue DESC;
 
 #Statistics about industry employees
-SELECT industry, AVG(employees) AS avg_industry_employees
+SELECT industry, ROUND(AVG(employees)) AS avg_industry_employees
 FROM fortune_companies
 GROUP BY industry
 HAVING avg_industry_employees >= 20000
@@ -52,3 +52,6 @@ FROM fortune_companies
 WHERE healthcare_benefits = 1 
 AND paid_time_off_days > 15 
 AND industry NOT IN ("Manufacturing","Healthcare", "Technology");
+
+#Subqueries
+
