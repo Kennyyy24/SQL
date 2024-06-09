@@ -24,3 +24,27 @@ VALUES
     (13, 'Youth Savings Account', 'Savings', 0.50, 0.00, 10.00),
     (14, 'Rewards Credit Card', 'Credit Card', 21.99, 0.00, 0.00),
     (15, 'Auto Loan', 'Loan', 4.25, 0.00, 20000.00);
+
+SELECT * FROM fortune_companies ORDER BY revenue DESC;
+
+SELECT industry, revenue,
+CASE
+WHEN revenue >= 400 THEN "High revenue performance"
+WHEN revenue >= 275 THEN "Mid revenue performance"
+WHEN revenue >= 150 THEN "Low revenue performance"
+ELSE "Underperforming"
+END AS "Revenue performance"
+FROM fortune_companies
+GROUP by industry
+ORDER BY revenue DESC;
+
+SELECT industry, AVG(employees) AS avg_industry_workers
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_industry_workers >= 20000
+
+SELECT company_name
+FROM fortune_companies
+WHERE healthcare_benefits = 1 
+AND paid_time_off_days > 15 
+AND industry NOT IN ("Manufacturing","Healthcare", "Technology");
