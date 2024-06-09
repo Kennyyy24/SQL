@@ -35,7 +35,7 @@ SELECT item_name, price
 FROM superstore
 ORDER BY price;
 
-#No. of each item availabke
+#No. of each item available
 SELECT item_name, COUNT(item_name)
 FROM superstore
 GROUP BY item_name;
