@@ -25,8 +25,10 @@ VALUES
     (14, 'Rewards Credit Card', 'Credit Card', 21.99, 0.00, 0.00),
     (15, 'Auto Loan', 'Loan', 4.25, 0.00, 20000.00);
 
+#Display the database
 SELECT * FROM fortune_companies ORDER BY revenue DESC;
 
+#CASE statement
 SELECT industry, revenue,
 CASE
 WHEN revenue >= 400 THEN "High revenue performance"
@@ -38,11 +40,13 @@ FROM fortune_companies
 GROUP by industry
 ORDER BY revenue DESC;
 
-SELECT industry, AVG(employees) AS avg_industry_workers
+#Statistics about industry employees
+SELECT industry, AVG(employees) AS avg_industry_employees
 FROM fortune_companies
 GROUP BY industry
-HAVING avg_industry_workers >= 20000
+HAVING avg_industry_employees >= 20000
 
+#Query about certain companies depending on the criteria
 SELECT company_name
 FROM fortune_companies
 WHERE healthcare_benefits = 1 
