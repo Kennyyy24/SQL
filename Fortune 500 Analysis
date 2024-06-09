@@ -44,7 +44,7 @@ ORDER BY revenue DESC;
 SELECT industry, ROUND(AVG(employees)) AS avg_industry_employees
 FROM fortune_companies
 GROUP BY industry
-HAVING avg_industry_employees >= 20000
+HAVING avg_industry_employees >= 20000;
 
 #Query about certain companies depending on the criteria
 SELECT company_name
@@ -53,5 +53,9 @@ WHERE healthcare_benefits = 1
 AND paid_time_off_days > 15 
 AND industry NOT IN ("Manufacturing","Healthcare", "Technology");
 
-#Subqueries
-
+#Subquery
+SELECT company_id
+FROM fortune_companies
+WHERE company_name IN 
+(SELECT company_name FROM fortune_companies WHERE industry = "Retail" OR industry = "Manufacturing")
+LIMIT 5;
