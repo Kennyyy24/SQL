@@ -68,13 +68,29 @@ FROM "netflix_titles_info"
 WHERE type = 'Movie';
 
 #When was the most recent batch of tv shows and/or movies added to the database?
+SELECT date_added
+FROM "netflix_titles_info"
+ORDER BY date_added DESC
+LIMIT 1;
 
+SELECT MAX(date(date_added))
+FROM "netflix_titles_info";
 
 #List all the movies and tv shows in alphabetical order.
-
+SELECT title
+FROM "netflix_titles_info"
+ORDER BY title;
 
 #Who was the Director for the movie The Starling?
-
+SELECT director
+FROM "netflix_titles_info" t
+JOIN "netflix_people" p
+ON t.show_id = p.show_id
+WHERE t.title = 'The Starling';
 
 #What is the oldest movie in the database and what year was it made?
-
+SELECT title, release_year
+FROM "netflix_titles_info"
+WHERE type = 'Movie'
+ORDER BY release_year
+LIMIT 1;
